@@ -163,8 +163,11 @@ if __name__ == "__main__":
         for image in images[:20]:
             _, desc = extract_dense_sift(
                 image, draw_keypoints=True, outdir=".")
+            print(desc.shape)
             descriptors.append(desc)
-        descriptors = np.vstack(descriptors)
+        descriptors = np.stack(descriptors)
+        print(descriptors.shape)
+        descriptors = np.random.rand(21,36,128)
         dic = dictionary_learning(descriptors)
         print(stop)
         cnt += 1
